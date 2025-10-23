@@ -26,9 +26,24 @@
       </ul>
     </div>
   </section>
+  <section>
+    <div>
+      <h2 :class="counter > 0 ? `positive`  : `negative` ">{{ counter }} </h2>
+      <button @click="increment">Aumentar</button>
+      <button @click="decrement">reducir</button>
+      <button @click="reset">reducir</button>
+    </div>
+  </section>
 </template>
 
 <script setup>
+
+const counter = ref(0);
+const increment = () => counter.value++;
+const decrement = () => counter.value--;
+const reset = () => (counter.value = 0);
+
+
 
 const arrayFrutas = [
   {
@@ -184,4 +199,18 @@ button:nth-child(3) { /* Botón Reset */
 button:nth-child(3):hover {
   background-color: #5a6268;
 }
+
+
+.positive {
+  background-color: greenyellow;
+  color: #333;
+  width: 100px;
+}
+
+.negative {
+  width: 100px;
+  background-color: #c82333;
+  color: #5a6268;
+}
+
 </style>
